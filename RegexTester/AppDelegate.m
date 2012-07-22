@@ -9,9 +9,6 @@
 #import "AppDelegate.h"
 
 @implementation AppDelegate
-@synthesize regexTextField;
-@synthesize inputTextView;
-@synthesize controller;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
