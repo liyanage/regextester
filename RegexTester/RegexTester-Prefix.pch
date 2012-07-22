@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'RegexTester' target in the 'RegexTester' project
+//
+
+#ifdef __OBJC__
+	#import <Cocoa/Cocoa.h>
+#endif
