@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B11143E15BDA165008B5FDF /* filter-plist.py in Resources */ = {isa = PBXBuildFile; fileRef = 1B11143D15BDA165008B5FDF /* filter-plist.py */; };
 		1BB944C815BB5443004A7D5E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BB944C715BB5443004A7D5E /* Cocoa.framework */; };
 		1BB944D215BB5443004A7D5E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1BB944D015BB5443004A7D5E /* InfoPlist.strings */; };
 		1BB944D415BB5443004A7D5E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB944D315BB5443004A7D5E /* main.m */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1B11143D15BDA165008B5FDF /* filter-plist.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = "filter-plist.py"; sourceTree = "<group>"; };
 		1BB944C315BB5443004A7D5E /* RegexTester.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RegexTester.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BB944C715BB5443004A7D5E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		1BB944CA15BB5443004A7D5E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -92,6 +94,7 @@
 				1BB944DA15BB5443004A7D5E /* AppDelegate.m */,
 				1BB944DC15BB5443004A7D5E /* MainMenu.xib */,
 				1BB944CE15BB5443004A7D5E /* Supporting Files */,
+				1B11143D15BDA165008B5FDF /* filter-plist.py */,
 			);
 			path = RegexTester;
 			sourceTree = "<group>";
@@ -121,6 +124,7 @@
 				1BB944BF15BB5443004A7D5E /* Sources */,
 				1BB944C015BB5443004A7D5E /* Frameworks */,
 				1BB944C115BB5443004A7D5E /* Resources */,
+				1B11143B15BDA132008B5FDF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -167,10 +171,27 @@
 				1BB944E615BCA14C004A7D5E /* status-valid.tiff in Resources */,
 				1BB944E715BCA14C004A7D5E /* status-invalid.tiff in Resources */,
 				1BB944E915BCA211004A7D5E /* status-none.tiff in Resources */,
+				1B11143E15BDA165008B5FDF /* filter-plist.py in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1B11143B15BDA132008B5FDF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "python RegexTester/filter-plist.py";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1BB944BF15BB5443004A7D5E /* Sources */ = {
