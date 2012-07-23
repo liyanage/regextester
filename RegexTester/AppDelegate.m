@@ -51,7 +51,13 @@
 		NSString *overallMatch = [inputString substringWithRange:[result range]];
 		[outputLines addObject:[NSString stringWithFormat:@"Match %ld: “%@”", resultCount, overallMatch]];
 		for (NSUInteger index = 1; index < [result numberOfRanges]; index++) {
-			NSString *subMatch = [inputString substringWithRange:[result rangeAtIndex:index]];
+			NSRange matchRange = [result rangeAtIndex:index];
+			NSString *subMatch = nil;
+			if (matchRange.location == NSNotFound) {
+				subMatch = @"(no match)";
+			} else {
+				subMatch = [inputString substringWithRange:[result rangeAtIndex:index]];
+			}
 			[outputLines addObject:[NSString stringWithFormat:@"Capture group %ld: “%@”", index, subMatch]];
 		}
 		resultCount++;
