@@ -18,7 +18,7 @@
 + (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key
 {
 	NSMutableSet *paths = [NSMutableSet setWithSet:[super keyPathsForValuesAffectingValueForKey:key]];
-	if ([key isEqualToString:@"resultString"]) {
+	if ([key isEqualToString:@"resultString"] || [key isEqualToString:@"regexCode"]) {
 		[paths addObjectsFromArray:@[
 		 @"regexString",
 		 @"inputString",
@@ -33,6 +33,7 @@
 	} else if ([key isEqualToString:@"regexStatusImage"]) {
 		[paths addObject:@"regexString"];
 	}
+    
 	return paths;
 }
 
@@ -87,6 +88,30 @@
 	return [NSRegularExpression regularExpressionWithPattern:self.regexString options:options error:nil];
 }
 
+- (NSString *)regexCode
+{    
+    if(self.regexString == nil) return nil;
+    
+    if([self regularExpression] == nil) return nil;
+    
+    NSMutableArray *options = [NSMutableArray array];
+
+    if(self.optionCaseInsensitive)            [options addObject:@"NSRegularExpressionCaseInsensitive"];
+    if(self.optionAllowCommentsAndWhitespace) [options addObject:@"NSRegularExpressionAllowCommentsAndWhitespace"];
+    if(self.optionIgnoreMetacharacters)       [options addObject:@"NSRegularExpressionIgnoreMetacharacters"];
+    if(self.optionDotMatchesLineSeparators)   [options addObject:@"NSRegularExpressionDotMatchesLineSeparators"];
+    if(self.optionAnchorsMatchLines)          [options addObject:@"NSRegularExpressionAnchorsMatchLines"];
+    if(self.optionUseUnixLineSeparators)      [options addObject:@"NSRegularExpressionUseUnixLineSeparators"];
+    if(self.optionUseUnicodeWordBoundaries)   [options addObject:@"NSRegularExpressionUseUnicodeWordBoundaries" ];
+
+    if([options count] == 0) [options addObject:@"0"];
+    NSString *optionsList = [options count] == 1 ? [options lastObject] : [NSString stringWithFormat:@"(%@)", [options componentsJoinedByString:@" | "]];
+    
+    return [NSString stringWithFormat:@"NSRegularExpressionOptions options = %@;\n\
+\n\
+NSError *error = nil;\n\
+NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@\"%@\" options:options error:&error];", optionsList, self.regexString];
+}
 
 - (NSImage *)regexStatusImage
 {
